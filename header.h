@@ -4,14 +4,23 @@ using namespace std;
 
 class matrix{
     private:
-    int** data;
+    float** data;
     int rows, cols;
 
     public:
+    void cleardata(){
+        for (int i = 0; i < rows; i++) {
+            delete[] data[i];
+        }
+        delete[] data;
+    }
     matrix(int Rows, int Cols);
     ~matrix();
-    int& operator()(int row, int col);
+    float& operator()(int row, int col);
     void print() const;
+    matrix& operator=(const matrix& other);
     matrix operator+(const matrix& other) const;
+    matrix operator-(const matrix& other) const;
+    matrix operator*(const matrix& other) const;
 };
 
